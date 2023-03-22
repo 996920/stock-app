@@ -26,8 +26,13 @@ const Controls = ({ selectedItems, setSelectedItems }) => {
           <DateSelector />
         </Grid>
         {isSmallScreen ? (
-          <Chip label="Equity" />
-        ) : (
+          <Box sx={{ padding: "10px", margin: "5px" }}>
+            <Chip label="Equity" sx={{ padding: "7px", margin: "5px" }} />
+            <Chip label="Debt" sx={{ padding: "7px", margin: "5px" }} />
+            <Chip label="Equity(MF)" sx={{ padding: "7px", margin: "5px" }} />
+          </Box>
+        ) : null}
+        {isSmallScreen ? null : (
           <Grid item lg={5}>
             <FilterControl
               selectedItems={selectedItems}
@@ -35,16 +40,12 @@ const Controls = ({ selectedItems, setSelectedItems }) => {
             />
           </Grid>
         )}
-        {isSmallScreen ? (
-          <Chip label="Debt" />
-        ) : (
+        {isSmallScreen ? null : (
           <Grid item lg={3}>
             <TagSelector />
           </Grid>
         )}
-        {isSmallScreen ? (
-          <Chip label="Equity(MF)" />
-        ) : (
+        {isSmallScreen ? null : (
           <Grid item lg={1}>
             <Button variant="contained">
               <ArrowRightAltIcon />

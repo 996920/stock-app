@@ -29,13 +29,14 @@ const AccountChart = () => {
           iconSize={10}
           padding={5}
           formatter={renderLegend}
+          align="right"
         />
         <Pie
           data={data}
-          cx={120}
-          cy={200}
-          innerRadius={isSmallScreen ? 30 : 60}
-          outerRadius={isSmallScreen ? 40 : 80}
+          cx={isSmallScreen ? 120 : 200}
+          cy={isSmallScreen ? 150 : 200}
+          innerRadius={isSmallScreen ? 60 : 100}
+          outerRadius={isSmallScreen ? 90 : 150}
           fill="#3467eb"
           paddingAngle={0}
           dataKey="value"

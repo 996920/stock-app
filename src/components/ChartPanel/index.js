@@ -35,7 +35,6 @@ export default function BasicTabs() {
     <Box sx={{ width: "100%" }}>
       <Box
         sx={{
-          borderBottom: 1,
           borderColor: "divider",
           display: isSmallScreen ? "block" : "flex",
           justifyContent: "space-between",
@@ -45,25 +44,28 @@ export default function BasicTabs() {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          sx={{ borderBottom: "1px solid #ccc" }}
         >
-          <Tab label=" Overview" {...a11yProps(0)} />
-          <Tab label="Treem map" {...a11yProps(1)} />
-          <Tab label="Insights " {...a11yProps(2)} />
+          <Tab label="Overview" {...a11yProps(0)} />
+          <Tab label="Treemap" {...a11yProps(1)} />
+          <Tab label="Insights" {...a11yProps(2)} />
         </Tabs>
-        <Box>
+        <Box
+          sx={
+            isSmallScreen
+              ? { display: "flex", justifyContent: "center", padding: "10px" }
+              : {}
+          }
+        >
           <FormControl>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
+            <RadioGroup row name="row-radio-buttons-group" value={"current"}>
               <FormControlLabel
-                value="female"
+                value="current"
                 control={<Radio />}
                 label="Current"
               />
               <FormControlLabel
-                value="male"
+                value="invested"
                 control={<Radio />}
                 label="Invested"
               />
