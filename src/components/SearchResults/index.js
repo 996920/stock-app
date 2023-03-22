@@ -12,7 +12,7 @@ const SearchResults = ({ selectedItems }) => {
             Showing results for{" "}
           </span>
           {selectedItems.map((item, index) => (
-            <span>
+            <span key={item}>
               {item}
               {index === selectedItems.length - 1 ? "" : ", "}
             </span>
