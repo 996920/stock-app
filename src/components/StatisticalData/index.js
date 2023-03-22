@@ -1,6 +1,7 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import StockInfo from "../StockInfo";
 
 const width1 = 450;
 const width2 = 120;
@@ -170,18 +171,26 @@ const columns = [
 ];
 
 const StatisticalData = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={data}
-        columns={columns}
-        pageSizeOptions={[10]}
-        paginationModel={{ page: 0, pageSize: 10 }}
-        rowSpacingType="border"
-        showColumnVerticalBorder={true}
-        showCellVerticalBorder={true}
-      />
-    </Box>
+    <>
+      {isSmallScreen ? (
+        data.map((stock) => <StockInfo stock={stock} />)
+      ) : (
+        <Box sx={{ height: 400, width: "100%" }}>
+          <DataGrid
+            rows={data}
+            columns={columns}
+            pageSizeOptions={[10]}
+            paginationModel={{ page: 0, pageSize: 10 }}
+            rowSpacingType="border"
+            showColumnVerticalBorder={true}
+            showCellVerticalBorder={true}
+          />
+        </Box>
+      )}
+    </>
   );
 };
 
