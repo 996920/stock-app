@@ -176,7 +176,7 @@ const StatisticalData = () => {
   return (
     <>
       {isSmallScreen ? (
-        data.map((stock) => <StockInfo stock={stock} />)
+        data.map((stock) => <StockInfo stock={stock} key={stock.id} />)
       ) : (
         <Box sx={{ height: 400, width: "100%" }}>
           <DataGrid
